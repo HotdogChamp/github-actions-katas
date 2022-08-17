@@ -14,7 +14,7 @@ jobs:
       - name: Upload Repo
         uses: actions/upload-artifact@v2
         with: 
-          name: code
+          name: code1
           path: .
   # Needs is only for the order of the jobs. 
   # To access artifcats for different jobs, we need to upload and download them
@@ -26,7 +26,7 @@ jobs:
       - name: Download repo
         uses: actions/download-artifact@v2
         with:
-          name: code
+          name: code1
           path: .
       - name: Run script
         run: chmod +x ci/build-app.sh && ci/build-app.sh
