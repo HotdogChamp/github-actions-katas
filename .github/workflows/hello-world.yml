@@ -7,6 +7,12 @@ jobs:
     steps:
       - name: Clone-down
         uses: actions/checkout@v2   
-      - name: my-step
+      - name: Run script
         run: ci/build-app.sh
-  
+  Test:
+    runs-on: ubuntu-latest
+    needs: [my-job]
+    container: gradle:6-jdk11
+    steps: 
+      - name: test
+        run: ci/unit-test-app.sh
