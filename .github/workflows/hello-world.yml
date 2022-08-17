@@ -5,16 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
+      - name: Upload Repo
+        uses: actions/upload-artifact@v2
+        with: 
+          name: code
+          path: .
       - name: Clone-down
         uses: actions/checkout@v2   
       - name: Run script
         run: ci/build-app.sh
       - name: test
         run: ci/unit-test-app.sh
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
-      - name: Upload Repo
-        uses: actions/upload-artifact@v2
-        with: 
-          name: code
-          path: .
+
