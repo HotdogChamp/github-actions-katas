@@ -7,6 +7,11 @@ jobs:
     steps:
       - name: Clone-down
         uses: actions/checkout@v2   
+      - name: Upload Repo
+        uses: actions/upload-artifact@v2
+        with: 
+          name: code
+          path: .
   Build: 
     needs: Clone-down
     runs-on: ubuntu-latest
@@ -16,16 +21,11 @@ jobs:
         run: ci/build-app.sh
       - name: test
         run: ci/unit-test-app.sh
-      - name: Upload Repo
-        uses: actions/upload-artifact@v2
-        with: 
-          name: code
-          path: .
       - name: Download repo
         uses: actions/download-artifact@v2
         with:
           name: code
-          path: /home/dan/DevOps/githubactions/github-actions-katas/downloadRepo
+          path: .
 
 
 
